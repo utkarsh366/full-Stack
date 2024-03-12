@@ -22,3 +22,40 @@ b=c;
 console.log("a is " + a);
 console.log("b is " + b);
 }
+
+//Random number
+
+var n = Math.random();
+n = n* 6;
+n= Math.floor(n) + 1;
+console.log(n);
+
+//Array
+
+//array guest list
+var guestList =["angela", "utkarsh", "harsh", "john", "kunal"];
+var name = prompt("write your name");
+var found = false;
+for(i=0;i<guestList.length;i++){
+if(name.toLowerCase == guestList[i].toLowerCase){
+    alert("You're welcome "+ (name))
+    found = true;
+    break;
+    
+}}
+
+    if(!found){alert("Sorry! Come again next time.")
+              
+}
+
+
+//Array Guest list without loop
+
+var guestList = ["angela", "utkarsh", "harsh", "john", "kunal"];
+var name = prompt("Write your name");
+
+if (guestList.includes(name.toLowerCase())) {
+    alert("You're welcome, " + name);
+} else {
+    alert("Sorry! Come again next time.");
+}
