@@ -32,7 +32,7 @@ app.post("/check", (req, res) => {
     if(userIsAuthorized ){
         res.sendFile(__dirname + "/public/secret.html");
     }else{ 
-        res.send("<h1>You are not authorized to view this page</h1>");
+        res.send("<h1>You are not authorized to view this page.</h1>");
             setTimeout(() => {
                 res.redirect("/")
             },5000);
