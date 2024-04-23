@@ -49,7 +49,7 @@ app.get("/", (req,res)=>{
 const postId = parseInt(req.param.id);
 app.get("/:id", (req,res)=>{
   const postId = parseInt(req.param.id);
-  const post = posts.find((p)=> p.id === postID);
+  const post = posts.find((p)=> p.id === postId);
    if (!post) return res.status(404).send("Not Found");
    res.json(post);
 });
@@ -58,12 +58,49 @@ app.get("/:id", (req,res)=>{
 //CHALLENGE 3: POST a new post
  app.post("/", (res,req)=> {
   const {title, content, author, date} =req.body;
+  const postId = parseInt(req.param.id);
+
   res.status(201).json({message: 'Post created successfully'});
  });
 
 //CHALLENGE 4: PATCH a post when you just want to update one parameter
+app.patch("/:id", (res,res)=>{
+  const id = parseInt(req.param.id);
+  const postId = parseInt(req.param.id);
+
+  const updatedPatch = req.body;
+  const post = post.find((p)=> p.id === postId)
+   if(!post) {
+    return res.status(404).json({ error: 'Post not Found'});
+   }
+  if(updatedPatch.title){
+    post.title = updatedPatch.title;}
+    if (updatedPatch.content) {
+      post.content= updatedPatch.content;
+    }
+    if (updatedPatch.author) {
+     post.author = updatedPatch.author;
+   }
+   if(updatedPatch.date){
+    post.date = updatedPatch.date;
+   }
+   return res.status(200).json({ message: 'Post updated successfully', updatedPost: post });
+  });
 
 //CHALLENGE 5: DELETE a specific post by providing the post id.
+app.delete( "/:id" , (req,res)=> {
+  const id = parseInt(req.param.id);
+  const postId = parseInt(req.param.id);
+    const postIndex = post.findIndex((p)=> p.id = postId);
+    if (postIndex === -1) {
+      app.status(404).json("no post found");
+      } else{
+        posts.splice(postIndex, 1);
+        res.status(200).send('Deleted Successfully');
+       
+    }
+  });
+
 
 app.listen(port, () => {
   console.log(`API is running at http://localhost:${port}`);
