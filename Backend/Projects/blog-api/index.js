@@ -56,6 +56,10 @@ app.get("/:id", (req,res)=>{
 
 
 //CHALLENGE 3: POST a new post
+ app.post("/", (res,req)=> {
+  const {title, content, author, date} =req.body;
+  res.status(201).json({message: 'Post created successfully'});
+ });
 
 //CHALLENGE 4: PATCH a post when you just want to update one parameter
 
