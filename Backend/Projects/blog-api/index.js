@@ -69,7 +69,7 @@ app.get("/posts/:id", (req,res)=>{
   res.status(201).json({message: 'Post created successfully'});
  });
 
-//CHALLENGE 4: PATCH a post when you just want to update one parameter
+//CHALLENGE 4: PATCH a post when you just want to update one parameter.
 app.patch("/posts/:id", (req,res) => {
   const id = parseInt(req.params.id);
   const postId = parseInt(req.params.id);
