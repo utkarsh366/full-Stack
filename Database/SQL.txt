@@ -1,0 +1,16 @@
+                                 // Creating a TABLE
+CREATE TABLE products (
+id INT NOT NULL,
+name STRING,
+price MONEY,
+PRIMARY KEY (id)
+);
+           
+                              //Insert a products
+
+INSERT INTO products VALUES (1, 'pen', 1.20)
+
+                            // leaving a vacent place in a row
+
+INSERT INTO products(id, name) VALUES(2, 'apple')
+
