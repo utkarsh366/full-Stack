@@ -56,15 +56,22 @@ In CURD Operations:
 
 -- join 
  --creating a customer table
- 
+Create TABLE  customers(id INT PRIMARY KEY AUTOINCREMENT , name VARCHAR (100) NOT NULL);
+
+INSERT INTO customers (name ) VALUES ('John');
+INSERT INTO customers (name ) VALUES ('David');
 
 
-
-
-
-
-
-
+ --creating an order table
+ CREATE TABLE 'order' (
+id INT NOT NULL,
+order_no INT,
+customer_id INT,
+product_id INT,
+PRIMARY KEY (id),
+FOREIGN KEY (customer_id) REFERENCES customers(id),
+FOREIGN KEY (product_id) REFERENCES products(id)
+);
 
 
 
