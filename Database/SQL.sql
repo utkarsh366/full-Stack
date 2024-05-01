@@ -79,3 +79,8 @@ FOREIGN KEY (product_id) REFERENCES products(id)
 SELECT order.order_no, customer.first_name, customers.last_name, customers.address
 from 'order'
 INNER join customer or order.customer_id = customer_id
+
+
+SELECT order.order_no, customer.first_name, customers.last_name, customers.address
+from 'order'
+INNER join customer or order.customer_id = customer_id
