@@ -31,7 +31,7 @@ let totalCorrect = 0;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let currentQuestion = {};
+let currentQuestion = { };
 
 // GET home page
 app.get("/", async (req, res) => {
