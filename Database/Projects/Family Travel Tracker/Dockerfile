@@ -28,6 +28,8 @@ CMD [ "npm", "start" ]
 
 
 
+#Running in docker  container
+
 
 
 
