@@ -5,14 +5,14 @@ import pg from "pg";
 const app = express();
 const port = 3000;
 
-const Client = new Client({
+const db = new pg.Client({
   user: "postgres",
     host: "localhost",
-    database: "postgres",
+    database: "permalist",
     password: "0987654321",
     port: 5432,
 });
-
+db.connect();
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,9 +36,29 @@ app.post("/add", (req, res) => {
   res.redirect("/");
 });
 
-app.post("/edit", (req, res) => {});
+app.post("/edit", (req, res) => {
+  const id = req.body.updatedItemId;
+  const title = req.body.updatedItemTitle;
 
-app.post("/delete", (req, res) => {});
+  const item = items.find(item => item.id == id);
+  if (item) {
+    item.title = title;
+  }
+
+  res.redirect("/");
+});
+
+app.post("/delete", (req, res) => {
+  const id = parseInt(req.body.deletedItemId, 10);  // Convert the id to an integer
+  const itemIndex = items.findIndex(item => item.id === id);
+
+  if (itemIndex !== -1) {
+    items.splice(itemIndex, 1);
+  }
+
+  res.redirect("/");  // Redirect back to the main page
+});
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
