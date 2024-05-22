@@ -7,26 +7,24 @@ const port = 3000;
 
 const db = new pg.Client({
   user: "postgres",
-    host: "localhost",
-    database: "permalist",
-    password: "0987654321",
-    port: 5432,
+  host: "localhost",
+  database: "permalist",
+  password: "0987654321",
+  port: 5432,
 });
-db.connect();
 
+db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let items = [
-  { id: 1, title: "Buy milk" },
-  { id: 2, title: "Finish homework" },
-];
+// Serve EJS templates
+app.set("view engine", "ejs");
 
 app.get("/", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM items ORDER BY id ASC");
-    items = result.rows;
+    const items = result.rows;
 
     res.render("index.ejs", {
       listTitle: "Today",
@@ -34,49 +32,46 @@ app.get("/", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    res.status(500).send("An error occurred while fetching items.");
   }
 });
-
 
 app.post("/add", async (req, res) => {
   const item = req.body.newItem;
 
-  try{
-    await db.query("INSERT INTO items (title) VALUES ($1", [item]);
+  try {
+    await db.query("INSERT INTO items (title) VALUES ($1)", [item]);
     res.redirect("/");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("An error occurred while adding the item.");
   }
-  catch(err){console.log(err);
-  }
-
 });
 
-app.post("/edit", (req, res) => {
-  const id = req.body.updatedItemId;
+app.post("/edit", async (req, res) => {
   const item = req.body.updatedItemTitle;
-  try{
-    await db.query("UPDATE items SET title = ($1)WHERE id = $2", [item,,id]);
+  const id = req.body.updatedItemId;
+
+  try {
+    await db.query("UPDATE items SET title = $1 WHERE id = $2", [item, id]);
     res.redirect("/");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("An error occurred while updating the item.");
   }
-  catch(err)
-  {console.log(err);
-  }
- 
-
-  res.redirect("/");
 });
 
-app.post("/delete", (req, res) => {
- const id = req.body.deleteItemId;
- try{
-  await db.query("DELETE FROM items WHERE id = $1", [id]);
-  res.redirect("/");
- }
- catch(err){
-  console.log(err);
- }
+app.post("/delete", async (req, res) => {
+  const id = req.body.deletedItemId;
 
+  try {
+    await db.query("DELETE FROM items WHERE id = $1", [id]);
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("An error occurred while deleting the item.");
+  }
 });
-
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
