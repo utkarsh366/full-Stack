@@ -23,40 +23,58 @@ let items = [
   { id: 2, title: "Finish homework" },
 ];
 
-app.get("/", (req, res) => {
-  res.render("index.ejs", {
-    listTitle: "Today",
-    listItems: items,
-  });
+app.get("/", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM items ORDER BY id ASC");
+    items = result.rows;
+
+    res.render("index.ejs", {
+      listTitle: "Today",
+      listItems: items,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-app.post("/add", (req, res) => {
+
+app.post("/add", async (req, res) => {
   const item = req.body.newItem;
-  items.push({ title: item });
-  res.redirect("/");
+
+  try{
+    await db.query("INSERT INTO items (title) VALUES ($1", [item]);
+    res.redirect("/");
+  }
+  catch(err){console.log(err);
+  }
+
 });
 
 app.post("/edit", (req, res) => {
   const id = req.body.updatedItemId;
-  const title = req.body.updatedItemTitle;
-
-  const item = items.find(item => item.id == id);
-  if (item) {
-    item.title = title;
+  const item = req.body.updatedItemTitle;
+  try{
+    await db.query("UPDATE items SET title = ($1)WHERE id = $2", [item,,id]);
+    res.redirect("/");
   }
+  catch(err)
+  {console.log(err);
+  }
+ 
 
   res.redirect("/");
 });
 
 app.post("/delete", (req, res) => {
-  const id = parseInt(req.body.deletedItemId, 10);  // Convert the id to an integer
-  const itemIndex = items.findIndex(item => item.id === id);
+ const id = req.body.deleteItemId;
+ try{
+  await db.query("DELETE FROM items WHERE id = $1", [id]);
+  res.redirect("/");
+ }
+ catch(err){
+  console.log(err);
+ }
 
-  if (itemIndex !== -1) {
-    items.splice(itemIndex, 1);
-  }
-
-  res.redirect("/");  // Redirect back to the main page
 });
 
 
