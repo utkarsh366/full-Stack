@@ -69,7 +69,6 @@ app.post("/delete", async (req, res) => {
     res.redirect("/");
   } catch (err) {
     console.log(err);
-    res.status(500).send("An error occurred while deleting the item.");
   }
 });
 
