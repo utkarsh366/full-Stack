@@ -9,7 +9,7 @@ const port = 3000;
 const db = new pg.Client({
   user: "postgres",
   host: "host.docker.internal",
-  database: "permalist",
+  database: "secrets",
   password: "0987654321",
   port: 5432,
 });
