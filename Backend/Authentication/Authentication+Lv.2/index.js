@@ -71,7 +71,7 @@ app.post("/login", async (req, res) => {
         res.send("Incorrect Password");
       }
     } else {
-      res.send("User not found");
+      res.send("User not found.");
     }
   } catch (err) {
     console.log(err);
