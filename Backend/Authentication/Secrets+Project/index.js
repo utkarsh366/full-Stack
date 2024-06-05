@@ -83,7 +83,6 @@ app.get(
     failureRedirect: "/login",
   })
 );
-//ALTER TABLE users ADD COLUMN secret TEXT;
 
 app.post(
   "/login",
