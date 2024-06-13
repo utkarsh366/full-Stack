@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const name = "Utkarsh";
+const fname = "Utkarsh";
+const lname = "Sharma"
 const no = "7";
 
 ReactDOM.render(
   <div>
-    <h1>Hello World! {name}</h1>
+    <h1>Hello World! {fname + " " + lname}</h1>
     <p>Your lucky number is: {no}</p>
   </div>,
   document.getElementById("root")
