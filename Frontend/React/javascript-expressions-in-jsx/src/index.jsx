@@ -13,7 +13,7 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// If you're running this locally in VS Code use the commands:
+// If you're running this02.. locally in VS Code use the commands:
 // npm install
 // to install the node modules and
 // npm run dev
