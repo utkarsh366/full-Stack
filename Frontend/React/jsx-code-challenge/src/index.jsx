@@ -4,7 +4,8 @@ import ReactDOM from "react-dom";
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 ReactDOM.render(
   <div>
-    <h1>My Favourit Fruits</h1>
+    <h1 className="heading">My Favourit Fruits</h1>
+    use class name to add CSS
     <ul>
       <li>apple</li>
     </ul>
@@ -26,7 +27,6 @@ ReactDOM.render(
 
 
 //React 18
-
 
 
 // import React from "react";
