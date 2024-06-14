@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 ReactDOM.render(
   <div>
     <h1 className="heading">My Favourit Fruits</h1>
-    use class name to add CSS
+    {/* use class name to add CSS */}
     <ul>
       <li>apple</li>
     </ul>
