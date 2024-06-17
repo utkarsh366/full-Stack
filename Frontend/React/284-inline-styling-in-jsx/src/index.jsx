@@ -15,3 +15,4 @@ ReactDOM.render(<h1 style={customStyle}>Hello World!</h1>, document.getElementBy
 // to install the node modules and
 // npm run dev
 // to launch your react project in your browser
+react DOMException
