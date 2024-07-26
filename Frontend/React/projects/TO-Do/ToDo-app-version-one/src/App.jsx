@@ -2,11 +2,12 @@
 function App() {
   
 
-  return (
-  <div>placeholder
-
-  </div>
-  );
+  return 
+  {
+    <center class="todo-customer ">
+    <h1>TODO App</h1> </center>
+  }
+  ;
 }
 
 export default App
