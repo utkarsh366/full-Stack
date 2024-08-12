@@ -5,6 +5,7 @@ function App() {
     <center class="todo-container">
       <AppName />
       <AddToDo />
+      <AddToDo />
 
       <div class="container text-center">
         <div class="row">
