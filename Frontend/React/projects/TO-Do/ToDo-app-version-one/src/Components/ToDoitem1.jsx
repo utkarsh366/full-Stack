@@ -1,6 +1,6 @@
-function ToDoitem() {
-  let todoName = "Buy Milk";
-  let todoDate = "4/10/2024";
+function ToDoitem1() {
+  let todoName = "Go to college";
+  let todoDate = "14/10/2014";
   return (
     <div class="container text-center">
       <div class="row">
@@ -16,4 +16,4 @@ function ToDoitem() {
   );
 }
 
-export default ToDoitem;
+export default ToDoitem1;
