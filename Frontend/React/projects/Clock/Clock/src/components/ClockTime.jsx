@@ -1,10 +1,10 @@
 let ClockTime = () => {
   let time = new Date();
   return (
-    <h1>
+    <p className="lead">
       Current time is {time.toLocaleDateString}
       {time.toLocaleTimeString()}
-    </h1>
+    </p>
   );
 };
 export default ClockTime;
