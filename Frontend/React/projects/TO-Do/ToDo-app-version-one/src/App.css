@@ -1,0 +1,17 @@
+h1 {
+    font-weight: 700; /* Corrected */
+  }
+  
+  button {
+    width: 100px;   /* Example width */
+    height: 40px;   /* Example height */
+  }
+  
+  input {
+    width: 100%;    /* This should be working as intended */
+  }
+  
+  .item-container {
+    text-align: left; /* This is correct */
+  }
+  
