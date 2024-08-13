@@ -14,4 +14,10 @@ h1 {
   .item-container {
     text-align: left; /* This is correct */
   }
-  
+  .kg-row{ 
+    margin: 10px 5px;
+    text-align: left;
+  }
+  .kg-btn{
+    min-width: 110px;
+  }
