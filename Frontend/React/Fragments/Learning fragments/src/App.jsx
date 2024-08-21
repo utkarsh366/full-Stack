@@ -9,7 +9,7 @@ function App() {
       <h1>Healthy Food</h1>
       <ul class="list-group">
         {foodItems.map((items) => (
-          <li class="list-group-item">{items}</li>
+          <li clasName="list-group-item">{items}</li>
         ))}
       </ul>
     </>
